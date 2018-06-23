@@ -1,0 +1,39 @@
+{
+  "todos": [
+    {
+      "text": "Create todo list via Arc.js + Redux with api ",
+      "completed": false,
+      "id": 1
+    },
+    {
+      "text": "Create todo list via Arc.js + Redux",
+      "completed": false,
+      "id": 2
+    },
+    {
+      "text": "вапв",
+      "completed": true,
+      "id": 3
+    },
+    {
+      "text": "hello",
+      "completed": true,
+      "id": 4
+    },
+    {
+      "text": "sfrgrg",
+      "completed": false,
+      "id": 5
+    },
+    {
+      "text": "hgfhjklkuytresfdghjnkml,;'",
+      "completed": false,
+      "id": 6
+    },
+    {
+      "text": "xcvbnjkuytfgcvbnjhgvb",
+      "completed": false,
+      "id": 7
+    }
+  ]
+}
