@@ -1,24 +1,21 @@
-const todos = (state = [], action) => {
-  switch (action.type) {
-    case 'ADD_TODO_SUCCESS':
-      return [...state, {
-        id: action.payload.response.id,
-        text: action.payload.response.text,
-        completed: action.payload.response.completed
-      }]
-    case 'DELETE_TODO_SUCCESS':
-      return state.filter(todo => todo.id !== action.id)
-    case 'TOGGLE_TODO_SUCCESS':
-      return state.map(todo =>
-        (todo.id === action.id) ? { ...todo,
-          completed: !todo.completed
-        } : todo
-      )
-    case 'GET_TODOS_SUCCESS':
-      return state.concat(action.payload.response)
-    default:
-      return state
-  }
+// https://github.com/diegohaz/arc/wiki/Reducers
+import camelCase from 'lodash/camelCase'
+import { combineReducers } from 'redux'
+import { reducer as form } from 'redux-form'
+import { reducer as thunk } from 'redux-saga-thunk'
+import todos from './todos/reducer'
+
+const reducers = {
+  form,
+  thunk,
+  todos
 }
 
-export default todos
+const req = require.context('.', true, /\.\/.+\/reducer\.js$/)
+
+req.keys().forEach((key) => {
+  const storeName = camelCase(key.replace(/\.\/(.+)\/.+$/, '$1'))
+  reducers[storeName] = req(key).default
+})
+
+export default combineReducers(reducers)
